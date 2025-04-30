@@ -1,35 +1,46 @@
-# recipist_frontend
+# Recipist 🍳 — Vue.js Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+**Recipist** is a modern recipe recommendation web application designed as a university bachelor project. This repository contains the **Vue 3 Single Page Application (SPA)** frontend, which connects to a RESTful Laravel API backend.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🔧 Tech Stack
 
-## Customize configuration
+- [Vue 3](https://vuejs.org/)
+- [Vite](https://vitejs.dev/) — Lightning-fast build tool
+- [Vue Router](https://router.vuejs.org/) — SPA navigation
+- [Pinia](https://pinia.vuejs.org/) — State management
+- [Axios](https://axios-http.com/) — HTTP client
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS 
+- [VeeValidate](https://vee-validate.logaretm.com/) — Form validation 
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
 
-## Project Setup
+## 🧠 Features
 
-```sh
-npm install
-```
+🔍 Search and filter recipes by name, ingredients, or category
 
-### Compile and Hot-Reload for Development
+💬 View recipe details: steps, ingredients, and nutrition
 
-```sh
-npm run dev
-```
+🧾 User interactions (like adding to favorites or viewing history)
 
-### Compile and Minify for Production
+📦 Dynamic data loading from Laravel API
 
-```sh
-npm run build
-```
+🎨 Modern and clean design (mobile-responsive)
 
-### Lint with [ESLint](https://eslint.org/)
+---
 
-```sh
-npm run lint
-```
+## 🙋‍♀️ Author
+Saba Khosroabadi
+Frontend Developer · Computer Engineering Student at Shariaty University
+
+---
+
+This is the frontend-only repo. Backend: https://github.com/sabaMK47/Recipist-laravel-api
+
+---
+
+## 📜 License
+This project is part of a university project and is not currently licensed for commercial use. Feel free to use it for educational purposes.
+
+
