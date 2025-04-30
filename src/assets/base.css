@@ -1,4 +1,6 @@
 /* color palette from <https://github.com/vuejs/theme> */
+@import "tailwindcss";
+
 :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -23,6 +25,7 @@
 
 /* semantic color variables for this project */
 :root {
+  --main-color:#717D11;
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
@@ -36,7 +39,7 @@
   --section-gap: 160px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
@@ -84,3 +87,36 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@font-face {
+  font-family: 'logo-font';
+  src: url('@/assets/fonts/LeckerliOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'text-bold';
+  src: url('@/assets/fonts/Outfit-ExtraBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'text-medium';
+  src: url('@/assets/fonts/Outfit-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'text-light';
+  src: url('@/assets/fonts/Outfit-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@theme {
+  --color-midnight: #091617;
+  --color-main: #717D11;
+  --color-light: #A1A488;
+}
+
