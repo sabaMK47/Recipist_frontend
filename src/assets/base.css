@@ -114,9 +114,5 @@ body {
   font-weight: normal;
   font-style: normal;
 }
-@theme {
-  --color-midnight: #091617;
-  --color-main: #717D11;
-  --color-light: #A1A488;
-}
+
 
