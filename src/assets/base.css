@@ -3,6 +3,7 @@
 
 @theme{
   --color-dark: #181818;
+  --color-main: #717D11;
 }
 :root {
   --vt-c-white: #ffffff;

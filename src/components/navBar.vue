@@ -24,7 +24,7 @@
 
     <!-- Right section -->
     <div class="flex gap-x-6 items-center text-font-medium">
-      <p class="cursor-pointer">sign in</p>
+      <p class="cursor-pointer text-main">sign in</p>
 
       <!-- Theme toggle -->
       <div
