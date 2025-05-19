@@ -24,25 +24,25 @@
 
     <!-- Right section -->
     <div class="flex gap-x-6 items-center text-font-medium">
-      <p class="cursor-pointer text-main">sign in</p>
+      <p class="cursor-pointer ">sign in</p>
 
       <!-- Theme toggle -->
       <div
-        class="dark-light-mode ml-2 cursor-pointer border-2 border-black dark:border-white rounded-full w-16 h-8 flex items-center justify-between px-2"
+        class="dark-light-mode ml-2 cursor-pointer bg-light rounded-full w-16 h-8 flex items-center px-1"
         @click="toggleTheme"
       >
         <!-- Moon on the left -->
         <img
           src="/src/assets/icons/moon.svg"
           alt="moon-icon"
-          class="w-5 h-5 transition-opacity duration-300 "
+          class="w-7 h-7 transition-opacity duration-300 bg-main rounded-full p-1"
           :class="isDark ? 'opacity-100' : 'opacity-0'"
         />
         <!-- Sun on the right -->
         <img
           src="/src/assets/icons/sun.svg"
           alt="sun-icon"
-          class="w-5 h-5 transition-opacity duration-300 "
+          class="w-7 h-7 transition-opacity duration-300 bg-main rounded-full p-1"
           :class="!isDark ? 'opacity-100' : 'opacity-0'"
         />
       </div>

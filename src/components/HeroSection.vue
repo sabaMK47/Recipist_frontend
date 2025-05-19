@@ -1,16 +1,16 @@
 <template>
-    <section class="w-screen py-10 overflow-hidden">
-      <div class="flex flex-col lg:flex-row items-center justify-evenly">
+    <section class="w-full py-10 overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-center justify-between">
   
         <!-- Text Section -->
-        <div class="flex flex-col gap-5 w-full lg:w-lg ">
+        <div class="flex flex-col gap-5 lg:w-lg ">
           <h1 class="text-black dark:text-white text-font-bold text-5xl">
             No Clue What to Cook? Let Your Fridge Decide.
           </h1>
           <p class="text-lg text-gray-700 dark:text-gray-300">
             Type in your ingredients, and we’ll serve up delicious ideas.
           </p>
-          <button class="bg-main text-white rounded-2xl py-3 px-10 text-lg text-font-bold w-fit">Start Now</button>
+          <button class="bg-main text-white rounded-2xl py-3 px-10 text-lg text-font-bold w-fit hover:cursor-pointer">Start Now</button>
         </div>
   
         <!-- Image Section -->

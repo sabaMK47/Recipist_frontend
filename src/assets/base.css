@@ -4,6 +4,7 @@
 @theme{
   --color-dark: #181818;
   --color-main: #717D11;
+  --color-light: #E6EACC;
 }
 :root {
   --vt-c-white: #ffffff;
@@ -29,7 +30,7 @@
 
 /* semantic color variables for this project */
 :root {
-  --main-color:#717D11;
+  --main-color:#d4d8b6;
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
