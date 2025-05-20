@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-screen flex justify-between items-center bg-white text-black dark:bg-dark dark:text-white  gap-x-9 absolute top-0 left-0 p-5 text-lg">
+  <nav class="w-screen flex justify-between items-center bg-white text-black dark:bg-dark dark:text-white gap-x-9 absolute top-0 left-0 p-5 text-lg">
     <!-- Left section -->
     <div class="flex gap-x-9 items-center">
       <h1 class="logo-font text-4xl main-color">Recipist</h1>
@@ -8,15 +8,11 @@
         <li
           v-for="item in navItems"
           :key="item"
-          class="relative flex flex-col items-center cursor-pointer"
+          class="relative flex flex-col items-center cursor-pointer group"
         >
           <span>{{ item }}</span>
-          <Motion
-            tag="span"
-            class="h-[2px] w-full mt-1 origin-center bg-black dark:bg-white"
-            :initial="{ scaleX: 0 }"
-            :whileHover="{ scaleX: 1 }"
-            :transition="{ duration: 0.3, ease: 'ease-in-out' }"
+          <span
+            class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"
           />
         </li>
       </ul>
@@ -24,21 +20,26 @@
 
     <!-- Right section -->
     <div class="flex gap-x-6 items-center text-font-medium">
-      <p class="cursor-pointer ">sign in</p>
+      <div class="group relative flex flex-col items-center cursor-pointer">
+        <p class="cursor-pointer">sign in</p>
+        <span
+            class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"
+          />
+      </div>
 
       <!-- Theme toggle -->
       <div
         class="dark-light-mode ml-2 cursor-pointer bg-light rounded-full w-16 h-8 flex items-center px-1"
         @click="toggleTheme"
       >
-        <!-- Moon on the left -->
+        <!-- Moon icon -->
         <img
           src="/src/assets/icons/moon.svg"
           alt="moon-icon"
           class="w-7 h-7 transition-opacity duration-300 bg-main rounded-full p-1"
           :class="isDark ? 'opacity-100' : 'opacity-0'"
         />
-        <!-- Sun on the right -->
+        <!-- Sun icon -->
         <img
           src="/src/assets/icons/sun.svg"
           alt="sun-icon"
@@ -51,11 +52,9 @@
 </template>
 
 <script setup>
-import { Motion } from '@motionone/vue'
 import { useDarkMode } from '@/composables/useDarkMode'
 
 const { isDark, toggleTheme } = useDarkMode()
 
-// Navigation items
 const navItems = ['menu', 'about us']
 </script>
