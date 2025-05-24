@@ -3,7 +3,7 @@
       <div class="flex flex-col lg:flex-row items-center gap-20">
   
         <!-- Text Section -->
-        <div class="flex flex-col gap-5 w-full lg:w-1/3 ">
+        <div class="flex flex-col gap-5 w-full lg:w-1/2 ">
           <h1 class="text-black dark:text-white text-font-bold text-5xl">
             No Clue What to Cook?<br> Let Your Fridge Decide.
           </h1>
