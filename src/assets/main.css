@@ -51,3 +51,7 @@ a,
 .text-font-bold{
   font-family:'text-bold' ;
 }
+
+.text-font-title{
+  font-family:'title' ;
+}

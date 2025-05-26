@@ -69,9 +69,7 @@ body {
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
   line-height: 1.6;
   font-family:
     Inter,
@@ -107,20 +105,27 @@ html, body {
 
 @font-face {
   font-family: 'text-bold';
-  src: url('@/assets/fonts/Outfit-ExtraBold.ttf') format('truetype');
+  src: url('@/assets/fonts/Kalameh-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'text-medium';
-  src: url('@/assets/fonts/Outfit-Medium.ttf') format('truetype');
+  src: url('@/assets/fonts/Kalameh-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'text-light';
-  src: url('@/assets/fonts/Outfit-Light.ttf') format('truetype');
+  src: url('@/assets/fonts/Kalameh-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'title';
+  src: url('@/assets/fonts/Kalameh-Black.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

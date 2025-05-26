@@ -21,7 +21,7 @@
     <!-- Right section -->
     <div class="flex gap-x-6 items-center text-font-medium">
       <div class="group relative flex flex-col items-center cursor-pointer">
-        <p class="cursor-pointer">sign in</p>
+        <p class="cursor-pointer">ثبت نام / ورود </p>
         <span
             class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"
           />
@@ -56,5 +56,11 @@ import { useDarkMode } from '@/composables/useDarkMode'
 
 const { isDark, toggleTheme } = useDarkMode()
 
-const navItems = ['menu', 'about us']
+const navItems = ['منو', 'درباره ما']
 </script>
+
+<style scoped>
+  nav{
+    transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+  }
+</style>
