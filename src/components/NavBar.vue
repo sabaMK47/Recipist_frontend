@@ -4,7 +4,7 @@
     <div class="flex gap-x-9 items-center">
       <h1 class="logo-font text-4xl main-color">Recipist</h1>
 
-      <ul class="flex gap-8 text-font-medium">
+      <ul class="gap-8 text-font-medium hidden lg:flex">
         <li
           v-for="item in navItems"
           :key="item"
@@ -20,7 +20,7 @@
 
     <!-- Right section -->
     <div class="flex gap-x-6 items-center text-font-medium">
-      <div class="group relative flex flex-col items-center cursor-pointer">
+      <div class="group relative flex-col items-center cursor-pointer hidden lg:flex">
         <p class="cursor-pointer">ثبت نام / ورود </p>
         <span
             class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"

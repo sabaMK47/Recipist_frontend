@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-x-hidden w-screen">
+    <div class="lg:w-screen">
         <NavBar></NavBar>
         <HeroSection></HeroSection>
     </div>
