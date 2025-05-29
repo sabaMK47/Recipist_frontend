@@ -17,7 +17,7 @@
               <div>
                 <div class="flex justify-start gap-2 items-center !mb-5">
                   <img src="../assets/icons/salad.svg" alt="pre-course" class="w-6 h-6">
-                  <h4 class="font-bold text-main">پیش غذا</h4>
+                  <h4 class="text-font-bold text-main">پیش غذا</h4>
                 </div>
                 <ul class="space-y-1">
                   <li class="mega-menu-li"><a href="#">سالاد</a></li>
@@ -30,7 +30,7 @@
               <div>
                 <div class="flex justify-start gap-2 items-center !mb-5">
                   <img src="../assets/icons/food.svg" alt="pre-course" class="w-6 h-6">
-                  <h4 class="font-bold mb-2 text-main">غذای اصلی</h4>
+                  <h4 class="text-font-bold mb-2 text-main">غذای اصلی</h4>
                 </div>
                 <ul class="space-y-1">
                   <li class="mega-menu-li"><a href="#">غذای ایرانی</a></li>
@@ -45,7 +45,7 @@
               <div>
                 <div class="flex justify-start gap-2 items-center !mb-5">
                   <img src="../assets/icons/dessert.svg" alt="pre-course" class="w-6 h-6">
-                  <h4 class="font-bold mb-2 text-main">دسر</h4>
+                  <h4 class="text-font-bold mb-2 text-main">دسر</h4>
                 </div>
                 <ul class="space-y-1">
                   <li class="mega-menu-li"><a href="#">کوکی و بیسکوییت</a></li>
@@ -59,7 +59,7 @@
               <div>
                 <div class="flex justify-start gap-2 items-center !mb-5">
                   <img src="../assets/icons/drink.svg" alt="pre-course" class="w-6 h-6">
-                  <h4 class="font-bold mb-2 text-main">نوشیدنی</h4>
+                  <h4 class="text-font-bold mb-2 text-main">نوشیدنی</h4>
                 </div>
                 <ul class="space-y-1">
                   <li class="mega-menu-li"><a href="#">گرم</a></li>
@@ -120,14 +120,14 @@
   >
     <div class="flex justify-between items-center mb-4">
       <h1 class="logo-font text-4xl text-main">Recipist</h1>
-      <button @click="openMenu" aria-label="بستن منو" class="text-2xl">
+      <button @click="openMenu" aria-label="بستن منو" class="text-4xl">
         ✕
       </button>
     </div>
 
     <div class="!my-5">
       <div @click="toggleMegaMenu" class="flex justify-between items-center cursor-pointer group">
-        <span class="text-lg font-medium">دسته بندی رسپی ها</span>
+        <span class="text-2xl text-font-bold !mb-5">دسته بندی رسپی ها</span>
         <svg class="w-8 h-8 transition-transform duration-300" :class="{ 'rotate-180': showMega }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
         </svg>
@@ -135,12 +135,12 @@
       <transition name="slide">
         <div v-if="showMega" class="!mt-5 space-y-6 text-right">
           <div v-for="section in megaMenu" :key="section.title" class="!mb-3">
-            <h4 class="font-bold text-xl text-main mb-2 flex items-center gap-2 !mb-5">
-              <img :src="section.icon" alt="icon" class="w-5 h-5" />
+            <h4 class="text-font-bold text-2xl text-main mb-2 flex items-center gap-2 !mb-5">
+              <img :src="section.icon" alt="icon" class="w-8 h-8" />
               {{ section.title }}
             </h4>
             <ul class="space-y-1 text-sm">
-              <li v-for="item in section.items" :key="item" class="mega-menu-li">
+              <li v-for="item in section.items" :key="item" class="mega-menu-li !py-5 text-2xl text-font-medium">
                 <a href="#" class="hover:text-main transition">{{ item }}</a>
               </li>
             </ul>
@@ -149,10 +149,10 @@
       </transition>
     </div>
 
-    <div class="text-lg font-medium !mb-5">
+    <div class="text-2xl text-font-bold !mb-5">
       <a href="#" class="block hover:text-main transition">درباره ما</a>
     </div>
-    <div class="text-lg font-medium">
+    <div class="text-2xl text-font-bold !mb-5">
       <a href="#" class="block hover:text-main transition">ثبت نام / ورود</a>
     </div>
   </div>
