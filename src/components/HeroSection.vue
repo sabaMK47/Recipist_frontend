@@ -1,14 +1,14 @@
 <template>
     <section class="w-full max-w-screen overflow-hidden py-10 relative top-20 lg:top-0">
-      <div class="flex flex-col lg:flex-row items-center gap-20 lg:gap-0">
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-0">
   
         <!-- Text Section -->
-        <div class="flex flex-col gap-5 w-full lg:w-1/3">
+        <div class="flex flex-col gap-5 w-full lg:w-1/2">
           <h1 class="text-black dark:text-white text-font-title text-4xl lg:text-6xl leading-normal">
             نمیدونی چی بپزی؟<br> یخچالت راه‌حل داره !
           </h1>
           <p class="text-xl lg:text-2xl text-gray-700 dark:text-gray-300 text-font-medium px-2">
-            با چند کلیک ساده، دستور غذای مخصوص خودتو بگیر، فقط کافیه بگی چی داری!          </p>
+            با چند کلیک ساده، دستور غذای مخصوص خودتو بگیر،<br> فقط کافیه بگی چی داری!</p>
           <button class="bg-main text-white rounded-2xl pb-4 pt-2 px-10 text-2xl text-font-bold w-fit cursor-pointer hover:scale-90 transition delay-50">بزن بریم</button>
         </div>
   
