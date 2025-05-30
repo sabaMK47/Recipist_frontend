@@ -18,12 +18,12 @@ export function useInstallPrompt() {
       deferredPrompt.value.prompt()
       const { outcome } = await deferredPrompt.value.userChoice
       deferredPrompt.value = null
-      return outcome
+      return outcome // 'accepted' or 'dismissed'
     }
   }
 
   return {
     isInstallPromptSupported,
-    promptInstall
+    promptInstall,
   }
 }

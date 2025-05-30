@@ -8,6 +8,7 @@ import router from './router'
 import { motionPlugin } from '@oku-ui/motion'
 
 
+
 const app = createApp(App)
 
 app.use(createPinia())
