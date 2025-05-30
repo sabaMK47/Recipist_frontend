@@ -1,7 +1,6 @@
-<!-- components/InstallBanner.vue -->
 <template>
     <div v-if="showBanner" class="fixed bottom-4 right-4 bg-white border p-4 rounded shadow-lg z-50">
-      <p class="mb-2 font-semibold">برای دسترسی راحت تر اپلیکیشن Recipist رو نصب کنید :)</p>
+      <p class="mb-2 font-semibold">برای دسترسی راحت‌تر اپلیکیشن Recipist رو نصب کنید :)</p>
       <button @click="install" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
         نصب
       </button>
@@ -17,20 +16,25 @@
   const { isInstallPromptSupported, promptInstall } = useInstallPrompt()
   
   onMounted(() => {
-    // Show the banner only if install is possible
-    if (isInstallPromptSupported.value) {
+    const dismissed = localStorage.getItem('pwa-install-dismissed')
+    const installed = window.matchMedia('(display-mode: standalone)').matches
+    if (!dismissed && isInstallPromptSupported.value && !installed) {
       showBanner.value = true
     }
   })
   
   const install = async () => {
     const outcome = await promptInstall()
-    console.log('User response to install:', outcome)
+    console.log('User chose:', outcome)
     showBanner.value = false
+    if (outcome === 'dismissed') {
+      localStorage.setItem('pwa-install-dismissed', 'true')
+    }
   }
   
   const dismiss = () => {
     showBanner.value = false
+    localStorage.setItem('pwa-install-dismissed', 'true')
   }
   </script>
   
