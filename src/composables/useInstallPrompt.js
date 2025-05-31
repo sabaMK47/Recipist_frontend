@@ -1,4 +1,3 @@
-// src/composables/useInstallPrompt.js
 import { ref, onMounted } from 'vue'
 
 export function useInstallPrompt() {
