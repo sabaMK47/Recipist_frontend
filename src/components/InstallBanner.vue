@@ -1,10 +1,10 @@
 <template>
-  <div v-if="showBanner" class="fixed bottom-4 right-4 bg-white border p-4 rounded shadow-lg z-50">
-    <p class="mb-2 font-semibold">برای دسترسی راحت‌تر اپلیکیشن Recipist رو نصب کنید :)</p>
-    <button @click="install" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+  <div v-if="showBanner" class="fixed bottom-4 right-4 bg-white dark:bg-dark border p-4 rounded shadow-lg z-50">
+    <p class="pb-4 font-semibold dark:text-white">برای دسترسی راحت‌تر اپلیکیشن Recipist رو نصب کنید :)</p>
+    <button @click="install" class="bg-main text-white px-3 py-1 rounded">
       نصب
     </button>
-    <button @click="dismiss" class="ml-2 text-gray-500 text-sm">الان نه</button>
+    <button @click="dismiss" class="mx-6 text-gray-500 dark:text-gray-200 text-sm">الان نه</button>
   </div>
 </template>
 
