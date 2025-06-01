@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showBanner" class="fixed bottom-4 right-4 bg-white dark:bg-dark p-4 rounded-2xl shadow-lg z-50">
+  <div v-if="showBanner" class="fixed bottom-4 right-4 bg-white dark:bg-dark p-4 rounded-2xl border shadow-lg z-50">
     <p class="pb-4 font-semibold dark:text-white">برای دسترسی راحت‌تر اپلیکیشن Recipist رو نصب کنید :)</p>
     <button @click="install" class="bg-main text-white px-3 py-1 rounded">
       نصب

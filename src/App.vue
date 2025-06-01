@@ -1,8 +1,8 @@
 <template>
     <div class="lg:w-screen">
+        <router-view />
         <InstallBanner></InstallBanner>
         <NavBar></NavBar>
-        <HeroSection></HeroSection>
         <Footer></Footer>
     </div>
 </template>

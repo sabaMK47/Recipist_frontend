@@ -3,9 +3,23 @@
     class="w-screen flex justify-between items-center bg-white text-black dark:bg-dark dark:text-white gap-x-9 absolute top-0 left-0 p-5 text-lg">
     <!-- Left section -->
     <div class="flex gap-x-9 items-center">
+      <RouterLink
+            to="/">
       <h1 class="logo-font text-4xl text-main">Recipist</h1>
+    </RouterLink>
 
       <ul class="gap-8 text-font-medium hidden lg:flex">
+        <li>
+          <RouterLink
+            to="/"
+            class="group relative flex-col items-center cursor-pointer hidden lg:flex"
+          >
+            <p class="cursor-pointer">صفحه اصلی</p>
+            <span
+              class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"
+            ></span>
+          </RouterLink>
+        </li>
         <li class="relative flex flex-col items-center cursor-pointer group">
           <span>دسته بندی رسپی ها</span>
           <span
@@ -79,11 +93,16 @@
 
     <!-- Right section -->
     <div class="flex gap-x-6 items-center text-font-medium">
-      <div class="group relative flex-col items-center cursor-pointer hidden lg:flex">
-        <p class="cursor-pointer">ثبت نام / ورود </p>
-        <span
-          class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"></span>
-      </div>
+     <RouterLink
+      to="/auth"
+      class="group relative flex-col items-center cursor-pointer hidden lg:flex"
+    >
+      <p class="cursor-pointer">ثبت نام / ورود</p>
+      <span
+        class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"
+      ></span>
+    </RouterLink>
+
 
       <!-- Theme toggle -->
       <div class="dark-light-mode ml-2 cursor-pointer bg-light rounded-full w-16 h-8 flex items-center px-1"
@@ -152,9 +171,12 @@
     <div class="text-2xl text-font-bold !mb-5">
       <a href="#" class="block hover:text-main transition">درباره ما</a>
     </div>
+    <RouterLink
+    to="/auth">
     <div class="text-2xl text-font-bold !mb-5">
       <a href="#" class="block hover:text-main transition">ثبت نام / ورود</a>
     </div>
+    </RouterLink>
   </div>
 </transition>
 
@@ -163,6 +185,7 @@
 <script setup>
 import { useDarkMode } from '@/composables/useDarkMode'
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const { isDark, toggleTheme } = useDarkMode()
 const isMenuOpen = ref(false)
