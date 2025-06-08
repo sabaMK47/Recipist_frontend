@@ -17,7 +17,7 @@
   }
 } */
 
-.mega-menu-li{
+.menu-li{
   @apply w-full hover:bg-white dark:hover:bg-dark rounded-md p-1;
 }
 
