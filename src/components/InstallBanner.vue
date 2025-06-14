@@ -4,7 +4,7 @@
     <button @click="install" class="bg-main text-white px-3 py-1 rounded">
       نصب
     </button>
-    <button @click="dismiss" class="mx-6 text-gray-500 dark:text-gray-200 text-sm">الان نه</button>
+    <button @click="dismiss" class="px-6 text-gray-500 dark:text-gray-200 text-sm">الان نه</button>
   </div>
 </template>
 
