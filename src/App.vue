@@ -3,12 +3,11 @@
         <router-view />
         <InstallBanner></InstallBanner>
         <NavBar></NavBar>
-        <HeroSection></HeroSection>
-        <div class="cards flex flex-row flex-wrap justify-evenly p-5 gap-5">
+        <!-- <div class="cards flex flex-row flex-wrap justify-evenly p-5 gap-5">
         <RecipeCard></RecipeCard>
         <RecipeCard></RecipeCard>
         <RecipeCard></RecipeCard>
-        </div>
+        </div> -->
         <Footer></Footer>
     </div>
 </template>

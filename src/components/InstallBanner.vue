@@ -15,27 +15,33 @@ import { useInstallPrompt } from '@/composables/useInstallPrompt'
 const showBanner = ref(false)
 const { isInstallPromptSupported, promptInstall } = useInstallPrompt()
 
-// Track if the user has explicitly dismissed the banner *in the current session*
+const LOCAL_STORAGE_KEY = 'pwaBannerDismissed'
 const dismissedInSession = ref(false)
 
-onMounted(() => {
-  // Check if the app is already installed
-  const installed = window.matchMedia('(display-mode: standalone)').matches
+const isMobile = () => {
+  return window.innerWidth <= 768 || /iPhone|Android|Mobile/i.test(navigator.userAgent)
+}
 
-  // Initial check: if supported and not installed, show the banner
-  if (isInstallPromptSupported.value && !installed && !dismissedInSession.value) {
+const isAppInstalled = () => {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true
+}
+
+const wasDismissedBefore = () => {
+  return localStorage.getItem(LOCAL_STORAGE_KEY) === 'true'
+}
+
+const shouldShowBanner = () => {
+  return isInstallPromptSupported.value && !isAppInstalled() && !dismissedInSession.value && !wasDismissedBefore() && isMobile()
+}
+
+onMounted(() => {
+  if (shouldShowBanner()) {
     showBanner.value = true
   }
 })
 
-// Watch for changes in isInstallPromptSupported (e.g., when the event fires)
-watch(isInstallPromptSupported, (newValue) => {
-  const installed = window.matchMedia('(display-mode: standalone)').matches
-  if (newValue && !installed && !dismissedInSession.value) {
-    showBanner.value = true
-  } else {
-    showBanner.value = false // Hide if not supported or already dismissed in session/installed
-  }
+watch(isInstallPromptSupported, () => {
+  showBanner.value = shouldShowBanner()
 })
 
 const install = async () => {
@@ -44,12 +50,15 @@ const install = async () => {
   showBanner.value = false
 
   if (outcome === 'dismissed') {
-    dismissedInSession.value = true;
+    dismissedInSession.value = true
+    localStorage.setItem(LOCAL_STORAGE_KEY, 'true')
   }
 }
 
 const dismiss = () => {
   showBanner.value = false
-  dismissedInSession.value = true;
+  dismissedInSession.value = true
+  localStorage.setItem(LOCAL_STORAGE_KEY, 'true')
 }
 </script>
+

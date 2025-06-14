@@ -1,5 +1,6 @@
-import AuthView from '@/components/AuthView.vue'
+import AuthView from '@/pages/AuthView.vue'
 import HeroSection from '@/components/HeroSection.vue'
+import RecipeDetailsPage from '@/pages/RecipeDetailsPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -15,6 +16,11 @@ const router = createRouter({
     name: 'auth',
     component: AuthView,
   },
+  {
+    path: '/recipe-details',
+    name: 'recipe-details',
+    component: RecipeDetailsPage,
+  }
   ],
 })
 
