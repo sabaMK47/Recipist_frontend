@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-screen py-6 px-8">
+  <section class="w-full max-w-screen h-auto py-30 lg:py-15 px-8">
     <div class="flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-0">
 
       <!-- Text Section -->
@@ -7,7 +7,7 @@
         :transition="{ duration: 0.8, delay: 0 }" class="flex flex-col gap-5 w-full lg:w-1/2 h-full">
         <h1 class="text-black dark:text-white text-font-title text-4xl lg:text-6xl leading-normal">
           <div
-            class="text-black dark:text-white text-font-title text-4xl lg:text-6xl leading-normal min-h-[4.5rem] lg:min-h-[7.5rem]"
+            class="text-black dark:text-white text-font-title text-4xl lg:text-5xl leading-normal min-h-[4.5rem] lg:min-h-[7.5rem]"
             style="white-space: pre-line">
             {{ typedText }}
           </div>
