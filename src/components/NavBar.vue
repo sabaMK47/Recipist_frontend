@@ -162,7 +162,11 @@ const megaMenu = [
 </script>
 
 <style scoped>
-/* transitions */
+
+nav {
+  transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;

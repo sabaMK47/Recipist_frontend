@@ -1,7 +1,7 @@
 import AuthView from '@/pages/AuthView.vue'
-import HeroSection from '@/components/HeroSection.vue'
 import RecipeDetailsPage from '@/pages/RecipeDetailsPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import HomePage from '@/pages/HomePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +9,7 @@ const router = createRouter({
   {
     path: '/',
     name: 'home',
-    component: HeroSection,
+    component: HomePage,
   },
   {
     path: '/auth', 
