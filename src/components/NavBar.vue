@@ -33,10 +33,12 @@
                 <img src="../assets/icons/drink.svg" alt="Drinks" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push('/category/drinks')">Drinks</h4>
               </div>
+            <RouterLink to="/recipe-details" class="group relative flex-col items-center cursor-pointer hidden lg:flex">
               <div class="flex items-center gap-2 menu-li ">
                 <img src="../assets/icons/non-veg.svg" alt="Non-Veg" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push('/category/nonveg')">Non-Veg</h4>
               </div>
+            </RouterLink>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/vegetables.svg" alt="Vegetables" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push('/category/vegetables')">Vegetables</h4>

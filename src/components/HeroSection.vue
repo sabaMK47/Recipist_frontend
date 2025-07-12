@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-screen py-40 px-8">
+  <section class="w-full max-w-screen py-6 px-8">
     <div class="flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-0">
 
       <!-- Text Section -->
