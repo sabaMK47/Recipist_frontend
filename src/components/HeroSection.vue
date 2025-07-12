@@ -55,13 +55,15 @@
 </template>
 
 <script setup>
+import RecipeService from '@/services/RecipeService';
 import { Motion } from '@oku-ui/motion'
 import { delay } from 'motion';
 import { ref, onMounted } from 'vue'
 
 const fullText = 'No clue what to make? \n Let your fridge deside !'
 const typedText = ref('')
-const typingDone = ref(false)
+const typingDone = ref(false);
+let allRecipes = ref(null);
 
 onMounted(() => {
   let i = 0

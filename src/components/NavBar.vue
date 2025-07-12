@@ -27,39 +27,39 @@
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/bakery.svg" alt="Bakery" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Bakery</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/bakery')">Bakery</h4>
               </div>
               <div class="flex items-center gap-2 menu-li ">
                 <img src="../assets/icons/drink.svg" alt="Drinks" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Drinks</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/drinks')">Drinks</h4>
               </div>
               <div class="flex items-center gap-2 menu-li ">
                 <img src="../assets/icons/non-veg.svg" alt="Non-Veg" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Non-Veg</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/nonveg')">Non-Veg</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/vegetables.svg" alt="Vegetables" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Vegetables</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/vegetables')">Vegetables</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/fastfood.svg" alt="Fast Food" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Fast Food</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/fastfood')">Fast Food</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/cereals.svg" alt="Cereals" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Cereals</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/cereal')">Cereals</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/food.svg" alt="Meals" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Meals</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/meal')">Meals</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/dessert.svg" alt="Sides" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Sides</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/sides')">Sides</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/salad.svg" alt="Fusion" class="w-8 h-8">
-                <h4 class="text-font-bold text-main">Fusion</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push('/category/fusion')">Fusion</h4>
               </div>
             </div>
           </div>
@@ -130,7 +130,8 @@
         <transition name="slide">
           <div v-if="showMega" class="!mt-5 space-y-6 text-right">
             <div v-for="section in megaMenu" :key="section.title" class="!mb-3">
-              <h4 class="text-font-bold text-2xl text-main mb-2 flex items-center gap-2 !mb-5">
+              <h4 class="text-font-bold text-2xl text-main mb-2 flex items-center gap-2 !mb-5 cursor-pointer"
+               @click="goToCategory(section.slug)">
                 <img :src="section.icon" alt="icon" class="w-8 h-8" />
                 {{ section.title }}
               </h4>
@@ -161,6 +162,7 @@
 import { useDarkMode } from '@/composables/useDarkMode'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import router from '@/router'
 
 const { isDark, toggleTheme } = useDarkMode()
 const isMenuOpen = ref(false)
@@ -175,42 +177,56 @@ const toggleMegaMenu = () => {
   showMega.value = !showMega.value
 }
 
+const goToCategory = (slug) => {
+  router.push(`/category/${slug}`)
+  isMenuOpen.value = false // Close mobile menu after navigation
+}
+
 const megaMenu = [
   {
     title: 'Bakery',
-    icon: new URL('../assets/icons/dessert.svg', import.meta.url).href
+    icon: new URL('../assets/icons/dessert.svg', import.meta.url).href,
+    slug:'bakery'
   },
   {
     title: 'Drinks',
-    icon: new URL('../assets/icons/drink.svg', import.meta.url).href
+    icon: new URL('../assets/icons/drink.svg', import.meta.url).href,
+    slug:'drinks'
   },
   {
     title: 'Non-Veg',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href
+    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
+    slug:'nonveg'
   },
   {
     title: 'Vegetables',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href
+    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
+    slug:'vegetables'
   },
   {
     title: 'Fast Food',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href
+    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
+    slug:'fastfood'
   },
   {
     title: 'Cereals',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href
+    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
+    slug:'cereal'
   },
   {
     title: 'Meals',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href
+    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
+    slug:'meal'
   },
   {
     title: 'Sides',
-    icon: new URL('../assets/icons/salad.svg', import.meta.url).href
+    icon: new URL('../assets/icons/salad.svg', import.meta.url).href,
+    slug:'sides'
   },
   {
     title: 'Fusion',
-    icon: new URL('../assets/icons/salad.svg', import.meta.url).href
+    icon: new URL('../assets/icons/salad.svg', import.meta.url).href,
+    slug:'fusion'
   }
 ]
 

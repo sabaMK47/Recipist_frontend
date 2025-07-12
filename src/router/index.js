@@ -15,6 +15,12 @@ const router = createRouter({
     name: 'auth',
     component: AuthView,
   },
+  {
+    path: '/category/:category',
+    name: 'CategoryPage',
+    component: () => import('@/views/CategoryPage.vue')
+  },
+
   ],
 })
 
