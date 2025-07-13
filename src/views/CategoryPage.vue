@@ -1,17 +1,16 @@
 <template>
-  <div class="p-4">
-    <h1 class="text-2xl font-bold capitalize mb-4">Recipes in "{{ category }}"</h1>
+  <div class="p-4 !mt-10">
+    <h1 class="text-2xl p-10 capitalize category-title">Recipes in "{{ category }}" category</h1>
 
     <div v-if="loading">
       <Loading />
     </div>
 
-    <div v-if="recipes.length">
+    <div v-if="recipes.length" class="flex items-center justify-center gap-10 flex-wrap">
       <div v-for="recipe in recipes" :key="recipe.id" class="mb-4">
-        <h2 class="text-lg font-semibold">{{ recipe.title }}</h2>
-        <p class="text-sm">{{ recipe.genre }}</p>
+          <RecipeCard :recipeTitle="recipe.title" :ingredients="recipe.NER" :recipeGenre="recipe.genre"/>
       </div>
-      <Pagination :totalPages="totalPages" v-model="currentPage" />
+      <Pagination :totalPages="totalPages" v-model="currentPage"/>
     </div>
   </div>
 </template>
@@ -22,9 +21,11 @@ import { useRoute, useRouter } from 'vue-router';
 import RecipeService from '@/services/RecipeService';
 import Loading from '@/components/Loading.vue';
 import Pagination from '@/components/Pagination.vue';
+import RecipeCard from '@/components/RecipeCard.vue';
 
 const route = useRoute();
 const router = useRouter();
+
 
 const category = ref(route.params.category);
 const recipes = ref([]);
@@ -32,15 +33,16 @@ const loading = ref(false);
 const currentPage = ref(Number(route.query.page) || 1);
 const totalPages = ref(null);
 
-async function fetchRecipes(cat, page) {
+async function fetchRecipes(cat,page) {
   loading.value = true;
   recipes.value = [];
   try {
-    // Adjust this API call to pass page param if supported
-    const res = await RecipeService.getRecipesByGenre(cat, page);
+    const res = await RecipeService.getRecipesByGenre(cat,page);
     recipes.value = res.data;
     currentPage.value = res.current_page;
     totalPages.value = res.last_page;
+    console.log(res.data);
+    
   } catch (err) {
     console.error(err);
   } finally {
@@ -87,3 +89,9 @@ function updateUrlPage(page) {
   });
 }
 </script>
+
+<style scoped>
+  .category-title{
+    margin-left: 5% ;
+  }
+</style>

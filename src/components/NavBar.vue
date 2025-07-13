@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="w-screen flex justify-between items-center bg-white text-black dark:bg-dark dark:text-white gap-x-9 absolute top-0 left-0 p-5 text-lg">
+    class="w-screen flex justify-between items-center bg-white text-black dark:bg-dark dark:text-white gap-x-9 absolute top-0 left-0 p-5 text-lg ">
     <!-- Left section -->
     <div class="flex gap-x-9 items-center">
       <RouterLink to="/">
@@ -132,7 +132,7 @@
         <transition name="slide">
           <div v-if="showMega" class="!mt-5 space-y-6 text-right">
             <div v-for="section in megaMenu" :key="section.title" class="!mb-3">
-              <h4 class="text-font-bold text-2xl text-main mb-2 flex items-center gap-2 !mb-5 cursor-pointer"
+              <h4 class="text-font-bold text-2xl text-main flex items-center gap-2 !mb-5 cursor-pointer"
                @click="goToCategory(section.slug)">
                 <img :src="section.icon" alt="icon" class="w-8 h-8" />
                 {{ section.title }}

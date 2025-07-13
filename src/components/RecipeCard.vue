@@ -12,18 +12,20 @@
   ">
 
     <div class="recipe-pic relative overflow-hidden h-48 sm:h-56">
-      <img src="../assets/images/chicken2.jpg" alt="chicken"
-        class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+      <img :src="randomImageUrl" :alt="recipeTitle" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
     </div>
 
     <div class="recipe-desc flex flex-col gap-5 justify-between p-4">
       <div>
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-light mb-2 truncate">Ghorme Sabzi</h2>
-        <p class="text-gray-600 dark:text-white text-sm mb-4 line-clamp-2">
-          A classic Persian herb stew, rich in flavor with tender meat and a medley of fresh herbs. Lorem ipsum dolor
-          sit amet consectetur adipisicing elit.
-        </p>
+        <div class="flex items-center justify-between gap-2">
+          <h2 class=" text-font-bold text-gray-800 dark:text-light mb-2 truncate">{{ recipeTitle }}</h2>
+          <h4 class="text-font-light text-gray-400">{{ recipeGenre }}</h4>
+        </div>
+        <div class="text-gray-600 dark:text-white text-sm mb-4 !mt-4 text-font-light line-clamp-2">
+         <p>Ingridients: </p>
+         {{ ingredients.join(', ') }}
+        </div>
       </div>
 
       <div class="flex items-center justify-between mt-2">
@@ -61,7 +63,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref , defineProps} from 'vue';
+const props = defineProps({
+  recipeTitle:String,
+  ingredients:String,
+  recipeGenre:String,
+})
 
 const liked = ref(false);
+
+const randomImageUrl = `https://source.unsplash.com/random/800x600/?food`;
+
 </script>

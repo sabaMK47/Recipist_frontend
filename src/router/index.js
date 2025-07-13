@@ -1,6 +1,6 @@
-import AuthView from '@/pages/AuthView.vue'
+import AuthView from '@/views/AuthView.vue'
 import HeroSection from '@/components/HeroSection.vue'
-import RecipeDetailsPage from '@/pages/RecipeDetailsPage.vue'
+import RecipeDetailsPage from '@/views/RecipeDetailsPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
