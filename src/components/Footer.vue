@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-light dark:bg-darkgreen text-neutral-700 dark:text-neutral-300 px-6 py-10 mt-10 relative">
+    <footer class="bg-light dark:bg-darkgreen text-neutral-700 dark:text-neutral-300 px-6 py-10 mt-10">
         <div class="mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center">
             <!-- Brand / About -->
             <div>

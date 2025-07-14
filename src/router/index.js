@@ -1,7 +1,7 @@
-import AuthView from '@/pages/AuthView.vue'
-import RecipeDetailsPage from '@/pages/RecipeDetailsPage.vue'
+import AuthView from '@/views/AuthView.vue'
+import RecipeDetailsPage from '@/views/RecipeDetailsPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/pages/HomePage.vue'
+import HomePage from '@/views/HomePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,10 +17,15 @@ const router = createRouter({
     component: AuthView,
   },
   {
+    path: '/category/:category',
+    name: 'CategoryPage',
+    component: () => import('@/views/CategoryPage.vue')
+  },
+  {
     path: '/recipe-details',
     name: 'recipe-details',
     component: RecipeDetailsPage,
-  }
+  },
   ],
 })
 
