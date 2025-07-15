@@ -3,6 +3,7 @@
         <router-view />
         <InstallBanner></InstallBanner>
         <NavBar></NavBar>
+        <RandomRecipe></RandomRecipe>
         <Footer></Footer>
     </div>
 </template>
@@ -11,4 +12,5 @@
 import NavBar from './components/NavBar.vue';
 import InstallBanner from './components/InstallBanner.vue';
 import Footer from './components/Footer.vue';
+import RandomRecipe from './components/RandomRecipe.vue';
 </script>
