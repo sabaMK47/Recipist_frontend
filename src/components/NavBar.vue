@@ -26,42 +26,40 @@
             class="absolute top-full left-0 lg:w-[200px] bg-light dark:bg-darkgreen shadow-lg p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-tr-2xl rounded-bl-2xl rounded-br-2xl">
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-2 menu-li">
-                <img src="../assets/icons/bakery.svg" alt="Bakery" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/bakery')">Bakery</h4>
+                <img src="../assets/icons/food.svg" alt="Meals" class="w-8 h-8">
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'main-dish' } })">Main-dish</h4>
               </div>
               <div class="flex items-center gap-2 menu-li ">
                 <img src="../assets/icons/drink.svg" alt="Drinks" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/drinks')">Drinks</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'dietary' } })">Dietary</h4>
               </div>
-            <RouterLink to="/recipe-details" class="group relative flex-col items-center cursor-pointer hidden lg:flex">
               <div class="flex items-center gap-2 menu-li ">
                 <img src="../assets/icons/non-veg.svg" alt="Non-Veg" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/nonveg')">Non-Veg</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'vegetarian' } })">Vegetarian</h4>
               </div>
-            </RouterLink>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/vegetables.svg" alt="Vegetables" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/vegetables')">Vegetables</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'vegan' } })">Vegan</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/fastfood.svg" alt="Fast Food" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/fastfood')">Fast Food</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'desserts' } })">Desserts</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/cereals.svg" alt="Cereals" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/cereal')">Cereals</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'breakfast' } })">Breakfast</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/food.svg" alt="Meals" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/meal')">Meals</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'kid-friendly' } })">Kid-friendly</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/dessert.svg" alt="Sides" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/sides')">Sides</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'side-dishes' } })">Side-dishes</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/salad.svg" alt="Fusion" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push('/category/fusion')">Fusion</h4>
+                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/api/recipes', query: { tags: 'snacks' } })">Snacks</h4>
               </div>
             </div>
           </div>
@@ -179,9 +177,10 @@ const toggleMegaMenu = () => {
 }
 
 const goToCategory = (slug) => {
-  router.push(`/category/${slug}`)
-  isMenuOpen.value = false // Close mobile menu after navigation
+  router.push({ path: '/recipes', query: { tags: slug } })
+  isMenuOpen.value = false
 }
+
 
 const megaMenu = [
   {

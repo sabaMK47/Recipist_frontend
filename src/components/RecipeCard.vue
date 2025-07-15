@@ -9,6 +9,7 @@
     w-full sm:w-96 md:w-80 lg:w-96 xl:w-80 
     mx-auto my-8 
     flex flex-col
+    h-[400px]
   ">
 
     <div class="recipe-pic relative overflow-hidden h-48 sm:h-56">
@@ -16,15 +17,14 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
     </div>
 
-    <div class="recipe-desc flex flex-col gap-5 justify-between p-4">
+    <div class="recipe-desc flex flex-col gap-5 justify-between p-4 flex-grow">
       <div>
         <div class="flex items-center justify-between gap-2">
           <h2 class=" text-font-bold text-gray-800 dark:text-light mb-2 truncate">{{ recipeTitle }}</h2>
-          <h4 class="text-font-light text-gray-400">{{ recipeGenre }}</h4>
+          <h4 class="text-font-light text-gray-400">{{ minutes }}min</h4>
         </div>
-        <div class="text-gray-600 dark:text-white text-sm mb-4 !mt-4 text-font-light line-clamp-2">
-         <p>Ingridients: </p>
-         {{ ingredients.join(', ') }}
+        <div class="text-gray-600 dark:text-white text-sm mb-4 !mt-4 text-font-light line-clamp-3">
+         {{ description }}
         </div>
       </div>
 
@@ -37,7 +37,9 @@
             cursor-pointer
             transition-all duration-300 
             transform hover:-translate-y-0.5 hover:shadow-md
-          ">
+          "
+            @click="goToDetails"
+          >
           See Details
         </button>
 
@@ -64,14 +66,21 @@
 
 <script setup>
 import { ref , defineProps} from 'vue';
+import { useRouter } from 'vue-router';
 const props = defineProps({
+  id:Number,
   recipeTitle:String,
-  ingredients:String,
-  recipeGenre:String,
+  description:String,
+  minutes:String,
 })
 
 const liked = ref(false);
+const router = useRouter();
 
-const randomImageUrl = `https://source.unsplash.com/random/800x600/?food`;
+const randomImageUrl = `https://source.unsplash.com/600x400/?${encodeURIComponent(props.recipeTitle)},food`;
+
+function goToDetails(){
+    router.push(`/recipes/${props.id}`);
+}
 
 </script>

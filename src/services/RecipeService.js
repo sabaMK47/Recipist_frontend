@@ -1,32 +1,29 @@
-import api from "./api";
-class RecipeService{
+import api from './api'
 
-    getAllRecipes(){
-        return api.get('/recipes').then((response) => 
-        { 
-            return response.data;
-        }).catch((err) => {
-            return Promise.reject(err);
-        });
-    }
+class RecipeService {
+  getAllRecipes() {
+    return api.get('/api/recipes').then(response => response.data)
+  }
 
-    getRecipeById(id){
-        return api.get(`/recipes/${id}`).then((response) => {
-            return response.data;
-        }).catch((err) => {
-            return Promise.reject(err);
-        });
-    }
+  getRecipesByTag(tag, page = 1) {
+    return api
+      .get('/api/recipes', {
+        params: {
+          tags: tag,
+          page: page,
+        },
+      })
+      .then(response => response.data)
+  }
 
-    getRecipesByGenre(genre){
-         return api.get(`/recipes?genre=${genre}`)
-         .then((response) => {
-            return response.data;
-        }).catch((err) => {
-            return Promise.reject(err);
-        });
-    }
+  getRecipeDetails(id) {
+    return api.get(`/api/recipes/${id}`).then(res => res.data)
+  }
+
+  getRandomRecipe() {
+  return api.get('/api/recipes/random').then(res => res.data);
+}
 
 }
 
-export default new RecipeService();
+export default new RecipeService()

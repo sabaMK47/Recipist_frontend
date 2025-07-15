@@ -17,12 +17,12 @@ const router = createRouter({
     component: AuthView,
   },
   {
-    path: '/category/:category',
+    path: '/recipes',
     name: 'CategoryPage',
     component: () => import('@/views/CategoryPage.vue')
   },
   {
-    path: '/recipe-details',
+    path: '/recipes/:id',
     name: 'recipe-details',
     component: RecipeDetailsPage,
   },
