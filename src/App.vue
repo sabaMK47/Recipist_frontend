@@ -1,11 +1,14 @@
 <template>
     <div class="lg:w-screen min-h-screen flex flex-col !mt-15">
-        <router-view />
+        <main class="flex-1">
+            <router-view />
+        </main>
         <InstallBanner></InstallBanner>
         <NavBar></NavBar>
-        <RandomRecipe></RandomRecipe>
-        <Footer></Footer>
+        <!-- <RandomRecipe></RandomRecipe> -->
     </div>
+    <Footer/>
+
 </template>
 
 <script setup>

@@ -64,11 +64,13 @@
             </div>
           </div>
         </li>
+        <RouterLink to="/about">
         <li class="relative flex flex-col items-center cursor-pointer group">
           <span>About us</span>
           <span
             class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"></span>
         </li>
+        </RouterLink>
       </ul>
     </div>
 

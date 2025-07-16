@@ -2,6 +2,7 @@ import AuthView from '@/views/AuthView.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import RecipeDetailsPage from '@/views/RecipeDetailsPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import About from '@/views/About.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
     name: 'recipe-details',
     component: RecipeDetailsPage,
   },
+  {
+    path: '/about',
+    name: 'about-page',
+    component: About,
+  }
   ],
 })
 
