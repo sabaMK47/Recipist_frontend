@@ -37,11 +37,14 @@
     <button class="p-3 bg-main rounded-4xl text-white w-[40%] cursor-pointer">Let's go</button>
   </div>
   <div class="w-full h-300"></div>
+
+  <RandomRecipe></RandomRecipe> 
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import HeroSection from '@/components/HeroSection.vue'
+import RandomRecipe from '@/components/RandomRecipe.vue';
 
 const newIngredient = ref('')
 const ingredients = ref([])

@@ -4,9 +4,7 @@
       class="w-full flex flex-col md:flex-row rounded-3xl shadow-xl overflow-hidden transition-all duration-700 h-full">
 
       <div class="hidden md:block md:w-[40%] h-[100vh] relative overflow-hidden">
-        <video autoplay muted loop playsinline class="w-full h-full object-cover object-center">
-          <source src="../assets/videos/InShot_20250615_125213614.mp4" type="video/mp4" />
-        </video>
+        <img src="../assets/images/green-crep.jpg" alt="breakfast">
       </div>
 
       <div class="md:w-[60%] w-full px-8 h-150 flex flex-col justify-center">

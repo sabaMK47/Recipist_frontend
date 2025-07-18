@@ -30,31 +30,31 @@
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'main-dish' } })">Main-dish</h4>
               </div>
               <div class="flex items-center gap-2 menu-li ">
-                <img src="../assets/icons/drink.svg" alt="Drinks" class="w-8 h-8">
+                <img src="../assets/icons/dietary.svg" alt="Drinks" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'dietary' } })">Dietary</h4>
               </div>
               <div class="flex items-center gap-2 menu-li ">
-                <img src="../assets/icons/non-veg.svg" alt="Non-Veg" class="w-8 h-8">
+                <img src="../assets/icons/vegetables.svg" alt="Non-Veg" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'vegetarian' } })">Vegetarian</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
-                <img src="../assets/icons/vegetables.svg" alt="Vegetables" class="w-8 h-8">
+                <img src="../assets/icons/vegan.svg" alt="Vegetables" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'vegan' } })">Vegan</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
-                <img src="../assets/icons/fastfood.svg" alt="Fast Food" class="w-8 h-8">
+                <img src="../assets/icons/dessert.svg" alt="Fast Food" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'desserts' } })">Desserts</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
-                <img src="../assets/icons/cereals.svg" alt="Cereals" class="w-8 h-8">
+                <img src="../assets/icons/breakfast.svg" alt="Cereals" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'breakfast' } })">Breakfast</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
-                <img src="../assets/icons/food.svg" alt="Meals" class="w-8 h-8">
+                <img src="../assets/icons/kid.svg" alt="Meals" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'kid-friendly' } })">Kid-friendly</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
-                <img src="../assets/icons/dessert.svg" alt="Sides" class="w-8 h-8">
+                <img src="../assets/icons/cereals.svg" alt="Sides" class="w-8 h-8">
                 <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'side-dishes' } })">Side-dishes</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">

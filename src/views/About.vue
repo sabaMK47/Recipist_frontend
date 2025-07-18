@@ -1,5 +1,5 @@
 <template>
-    <div class="full-page-container flex flex-col lg:flex-row justify-evenly items-center !mt-20 w-screen">
+    <div class="full-page-container flex flex-col lg:flex-row justify-evenly items-center !mt-10 w-screen">
           <div class="container w-full lg:w-1/2  p-10 flex flex-col gap-5 text-justify">
         <h1 class="text-font-bold text-3xl">🍴 About Recipist</h1>
         <p class="text-font-medium">
