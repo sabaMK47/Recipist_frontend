@@ -34,9 +34,8 @@
         <button @click="removeIngredient(index)" class="text-lg cursor-pointer font-bold text-gray-600 hover:text-red-500">×</button>
       </div>
     </div>
-    <button class="p-3 bg-main rounded-4xl text-white w-[40%] cursor-pointer">Let's go</button>
+    <button class="p-3 bg-main rounded-4xl text-white w-[90%] max-w-xl cursor-pointer">Let's go</button>
   </div>
-  <div class="w-full h-300"></div>
 
   <RandomRecipe></RandomRecipe> 
 </template>

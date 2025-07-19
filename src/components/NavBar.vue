@@ -72,6 +72,21 @@
         </li>
         </RouterLink>
       </ul>
+      <div class="search-input relative lg:block hidden">
+         <input
+        v-model="recipeName"
+        type="text"
+        placeholder="search recipe by name"
+        class="w-[300px] h-10 rounded-full px-5 pr-24 !rounded-4xl input-style"
+        @keyup.enter="addIngredient"
+      />
+       <button
+        @click="addIngredient"
+        class="absolute right-1 cursor-pointer top-1 bottom-1 my-auto h-8 pl-4 pr-2"
+      >
+        <img src="../assets/icons/search.svg" alt="search-icon" class="w-6 h-6">
+      </button>
+      </div>
     </div>
 
     <!-- Right section -->
@@ -155,6 +170,21 @@
       <RouterLink to="/auth" @click="isMenuOpen = false">
         <div class="text-2xl text-font-bold !mb-5">Sign up / Login</div>
       </RouterLink>
+        <div class="search-input relative lg:hidden block w-full">
+         <input
+        v-model="recipeName"
+        type="text"
+        placeholder="search recipe by name"
+        class="w-full h-12 rounded-full px-5 pr-24 !rounded-4xl input-style"
+        @keyup.enter="addIngredient"
+      />
+       <button
+        @click="addIngredient"
+        class="absolute right-1 cursor-pointer top-1 bottom-1 my-auto h-8 pl-4 pr-2 pt-1"
+      >
+        <img src="../assets/icons/search.svg" alt="search-icon" class="w-8 h-8">
+      </button>
+    </div>
     </div>
   </transition>
 </template>

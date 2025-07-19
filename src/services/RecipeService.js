@@ -22,7 +22,12 @@ class RecipeService {
 
   getRandomRecipe() {
   return api.get('/api/recipes/random').then(res => res.data);
-}
+  }
+
+  getSearchResults(query){
+    return api.get(`:9200/recipes/_search?q=name:${query}`)
+    .then((response)=> response.hits.hits);
+  }
 
 }
 

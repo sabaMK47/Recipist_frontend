@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-10 w-full justify-between mx-auto dark:bg-darkgreen bg-light lg:flex-row !mb-10 items-center p-5 lg:p-10">
+    <div class="flex flex-col gap-10 w-full justify-center mx-auto lg:flex-row !mb-10 items-center p-5 lg:p-10">
         <div class="instructions lg:w-[50%] w-full">
             <h1 class="text-font-title text-3xl pb-3">Recipe of the Day</h1>
 
