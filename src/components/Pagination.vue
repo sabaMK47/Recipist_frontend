@@ -3,7 +3,7 @@
     <nav class="pagination" aria-label="Pagination Navigation">
       <button class="page-btn" :disabled="currentPage === 1" @click="$emit('update:modelValue', currentPage - 1)"
         aria-label="Previous page">
-        ‹ Previous
+         Previous
       </button>
 
       <template v-for="page in displayedPages" :key="pageKey(page)">
@@ -16,7 +16,7 @@
 
       <button class="page-btn" :disabled="currentPage === totalPages"
         @click="$emit('update:modelValue', currentPage + 1)" aria-label="Next page">
-        Next ›
+        Next 
       </button>
     </nav>
   </div>
@@ -57,11 +57,11 @@ const displayedPages = computed(() => {
     }
   } else {
     if (currentPage.value <= 3) {
-      pages.push(2, 3, 4, '...', lastPage);
+      pages.push(2, 3,'...', lastPage);
     } else if (currentPage.value >= lastPage - 2) {
-      pages.push('...', lastPage - 3, lastPage - 2, lastPage - 1, lastPage);
+      pages.push('...',lastPage - 2, lastPage - 1, lastPage);
     } else {
-      pages.push('...', currentPage.value - 1, currentPage.value, currentPage.value + 1, '...', lastPage);
+      pages.push('...', currentPage.value, '...', lastPage);
     }
   }
 
@@ -78,7 +78,7 @@ const pageKey = (page) => (page === '...' ? `ellipsis-${Math.random()}` : `page-
   user-select: none;
   font-family: 'Inter', sans-serif;
   align-items: center;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 .page-btn {

@@ -34,7 +34,7 @@
         <button @click="removeIngredient(index)" class="text-lg cursor-pointer font-bold text-gray-600 hover:text-red-500">×</button>
       </div>
     </div>
-    <button class="p-3 bg-main rounded-4xl text-white w-[90%] max-w-xl cursor-pointer">Let's go</button>
+    <button class="p-3 bg-main rounded-4xl text-white w-[90%] max-w-xl cursor-pointer" @click="searchByIngredients">Let's go</button>
   </div>
 
   <RandomRecipe></RandomRecipe> 
@@ -44,7 +44,9 @@
 import { ref } from 'vue'
 import HeroSection from '@/components/HeroSection.vue'
 import RandomRecipe from '@/components/RandomRecipe.vue';
+import { useRoute, useRouter } from 'vue-router';
 
+const router = useRouter();
 const newIngredient = ref('')
 const ingredients = ref([])
 
@@ -58,6 +60,15 @@ function addIngredient() {
 
 function removeIngredient(index) {
   ingredients.value.splice(index, 1)
+}
+
+function searchByIngredients() {
+  if (ingredients.value.length) {
+    router.push({ 
+      name: 'search-results', 
+      query: { ingredients: ingredients.value } 
+    });
+  }
 }
 </script>
 

@@ -6,7 +6,7 @@
     overflow-hidden 
     shadow-lg hover:shadow-xl dark:shadow-md 
     transition-all duration-300 
-    w-full sm:w-96 md:w-80 lg:w-96 xl:w-80 
+    w-[350px] sm:w-96 md:w-80 lg:w-96 xl:w-80 
     mx-auto my-8 
     flex flex-col
     h-[400px]

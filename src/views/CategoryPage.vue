@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 !mt-10">
-    <h1 class="text-2xl p-10 capitalize category-title">
+    <h1 class="text-2xl lg:p-10 px-3 pb-10 capitalize category-title">
       Recipes tagged with "{{ tag || 'All' }}"
     </h1>
 

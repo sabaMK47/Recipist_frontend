@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col gap-10 w-full justify-center mx-auto lg:flex-row !mb-10 items-center p-5 lg:p-10">
+    <div class="flex flex-col gap-10 w-full justify-center mx-auto lg:flex-row !my-10 items-center p-5 lg:p-10">
         <div class="instructions lg:w-[50%] w-full">
-            <h1 class="text-font-title text-3xl pb-3">Recipe of the Day</h1>
+            <h1 class="text-font-title text-3xl pb-20">Recipe of the Day</h1>
 
             <h4 class="text-font-bold text-xl pb-3 text-main dark:text-main">
                 {{ recipeDetails?.name }}
@@ -11,23 +11,25 @@
                 <p class="text-font-light pb-3">{{recipeDetails?.ingredients.map(ing => ing.name).join(', ')}}</p>
             </div>
             <div class="space-y-4">
-                <h2 class="text-font-medium pb-3 text-main dark:text-main">Preparation Steps</h2>
-                <ol class="list-decimal text-font-light list-inside text-gray-700 dark:text-gray-200 pb-3">
-                    <li v-for="(step, index) in recipeDetails?.steps" :key="index">
+                <h2 class="text-xl text-font-bold py-5 text-main dark:text-main">Preparation Steps</h2>
+
+                <ol v-if="recipeDetails?.steps && recipeDetails?.steps?.length"
+                    class="list-decimal pb-10 text-font-medium list-inside space-y-2 text-gray-700 dark:text-gray-200">
+                    <li v-for="(step, index) in recipeDetails.steps" :key="index">
                         {{ step }}
                     </li>
                 </ol>
+
+                <p v-else class="text-gray-600 dark:text-gray-300 text-font-light !mb-10">No preparation steps
+                    available.</p>
             </div>
 
             <h5 class="text-font-medium pb-3 text-main dark:text-main">Time to make : {{ recipeDetails?.minutes }} min
             </h5>
         </div>
         <div class="pic">
-            <img
-                src="../assets/images/pasta.jpg"
-                alt="Recipe Image"
-                class="rounded-xl shadow-md w-full object-cover max-h-[300px] "
-            />
+            <img src="../assets/images/pasta.jpg" alt="Recipe Image"
+                class="rounded-xl shadow-md w-full object-cover max-h-[300px] " />
         </div>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="lg:w-screen min-h-screen flex flex-col !mt-15">
-        <main class="flex-1">
+        <main class="flex-1 !my-20">
             <router-view />
         </main>
         <InstallBanner></InstallBanner>
