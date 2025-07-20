@@ -4,7 +4,7 @@
       <Loading />
     </div>
 
-    <div v-if="recipes.length" class="flex items-center justify-center gap-10 flex-wrap">
+    <div v-if="recipes?.length" class="flex items-center justify-center gap-10 flex-wrap">
       <div v-for="recipe in recipes" :key="recipe.id" class="mb-4">
         <RecipeCard :recipeTitle="recipe.name" :description="recipe.description" :minutes="recipe.minutes"
           :id="recipe.id" />
@@ -20,58 +20,72 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import RecipeService from '@/services/RecipeService';
 import Loading from '@/components/Loading.vue';
-import Pagination from '@/components/Pagination.vue';
 import RecipeCard from '@/components/RecipeCard.vue';
 
 const route = useRoute();
-const router = useRouter();
 
-const tag = ref(route.query.tags || null);
 const recipes = ref([]);
 const loading = ref(false);
-const currentPage = ref(Number(route.query.page) || 1);
-const totalPages = ref(null);
-const recipeName = ref('');
 
-async function fetchRecipes() {
+const fetchRecipesByName = async () => {
+  const q = route.query.q;
+  if (!q) return;
   loading.value = true;
   try {
-    const ingredientQuery = route.query.ingredients;
-    if (ingredientQuery && ingredientQuery.length) {
-      const ingredients = typeof ingredientQuery === 'string'
-        ? ingredientQuery.split(',')
-        : Array.isArray(ingredientQuery)
-          ? ingredientQuery.flatMap(str => str.split(','))
-          : [];
-      const res = await RecipeService.getRecipesByIngredients(ingredients);
-      recipes.value = res;
-      console.log(recipes.value);
-
-    } else if (recipeName.value) {
-      const res = await RecipeService.getSearchResults(recipeName.value);
-      recipes.value = res;
-    }
+    const res = await RecipeService.searchByName(q);
+    recipes.value = res;
   } catch (err) {
-    console.error('Error fetching recipes:', err);
+    console.error(err);
   } finally {
     loading.value = false;
   }
-}
+};
 
+const fetchRecipesByIngredients = async () => {
+  loading.value = true;
+  try {
+    const ingredientQuery = route.query.ingredients;
+    const ingredients = typeof ingredientQuery === 'string'
+      ? ingredientQuery.split(',')
+      : Array.isArray(ingredientQuery)
+        ? ingredientQuery.flatMap(str => str.split(','))
+        : [];
+
+    if (ingredients.length) {
+      const res = await RecipeService.getRecipesByIngredients(ingredients);
+      recipes.value = res;
+    } else {
+      recipes.value = [];
+    }
+  } catch (err) {
+    console.error('Error fetching recipes by ingredients:', err);
+  } finally {
+    loading.value = false;
+  }
+};
 
 watch(
   () => route.query,
   () => {
-    fetchRecipes();
+    const q = route.query.q;
+    const ingredients = route.query.ingredients;
+
+    if (q) {
+      fetchRecipesByName();
+    } else if (ingredients) {
+      fetchRecipesByIngredients();
+    } else {
+      recipes.value = []; // no valid query
+    }
   },
   { immediate: true }
 );
-
 </script>
+
 
 <style scoped>
 .category-title {

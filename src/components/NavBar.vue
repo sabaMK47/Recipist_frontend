@@ -10,7 +10,7 @@
       <ul class="gap-8 text-font-medium hidden lg:flex">
         <!-- Home link -->
         <li>
-          <RouterLink to="/" class="group relative flex-col items-center cursor-pointer hidden lg:flex">
+          <RouterLink to="/" class="group relative flex-col items-center cursor-pointer hidden lg:flex ">
             <p class="cursor-pointer">Home</p>
             <span
               class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"></span>
@@ -27,65 +27,66 @@
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/food.svg" alt="Meals" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'main-dish' } })">Main-dish</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'main-dish' } })">Main-dish</h4>
               </div>
               <div class="flex items-center gap-2 menu-li ">
                 <img src="../assets/icons/dietary.svg" alt="Drinks" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'dietary' } })">Dietary</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'dietary' } })">Dietary</h4>
               </div>
               <div class="flex items-center gap-2 menu-li ">
                 <img src="../assets/icons/vegetables.svg" alt="Non-Veg" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'vegetarian' } })">Vegetarian</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'vegetarian' } })">Vegetarian</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/vegan.svg" alt="Vegetables" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'vegan' } })">Vegan</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'vegan' } })">Vegan</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/dessert.svg" alt="Fast Food" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'desserts' } })">Desserts</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'desserts' } })">Desserts</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/breakfast.svg" alt="Cereals" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'breakfast' } })">Breakfast</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'breakfast' } })">Breakfast</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/kid.svg" alt="Meals" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'kid-friendly' } })">Kid-friendly</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'kid-friendly' } })">Kid-friendly</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/cereals.svg" alt="Sides" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/recipes', query: { tags: 'side-dishes' } })">Side-dishes</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'side-dishes' } })">Side-dishes</h4>
               </div>
               <div class="flex items-center gap-2 menu-li">
                 <img src="../assets/icons/salad.svg" alt="Fusion" class="w-8 h-8">
-                <h4 class="text-font-bold text-main" @click="$router.push({ path: '/api/recipes', query: { tags: 'snacks' } })">Snacks</h4>
+                <h4 class="text-font-bold text-main"
+                  @click="$router.push({ path: '/recipes', query: { tags: 'appetizers' } })">Appetizers</h4>
               </div>
             </div>
           </div>
         </li>
         <RouterLink to="/about">
-        <li class="relative flex flex-col items-center cursor-pointer group">
-          <span>About us</span>
-          <span
-            class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"></span>
-        </li>
+          <li class="relative flex flex-col items-center cursor-pointer group">
+            <span>About us</span>
+            <span
+              class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"></span>
+          </li>
         </RouterLink>
       </ul>
-      <div class="search-input relative lg:block hidden">
-         <input
-        v-model="recipeName"
-        type="text"
-        placeholder="search recipe by name"
-        class="w-[300px] h-10 rounded-full px-5 pr-24 !rounded-4xl input-style"
-        @keyup.enter="addIngredient"
-      />
-       <button
-        @click="addIngredient"
-        class="absolute right-1 cursor-pointer top-1 bottom-1 my-auto h-8 pl-4 pr-2"
-      >
-        <img src="../assets/icons/search.svg" alt="search-icon" class="w-6 h-6">
-      </button>
+      <div v-if="isHomePage" class="search-input relative lg:block hidden">
+        <input v-model="recipeName" type="text" placeholder="search recipe by name"
+          class="w-[300px] h-10 rounded-full px-5 pr-24 !rounded-4xl input-style" @keyup.enter="goToSearchResults" />
+        <button @click="goToSearchResults" class="absolute right-1 cursor-pointer top-1 bottom-1 my-auto h-8 pl-4 pr-2">
+          <img src="../assets/icons/search.svg" alt="search-icon" class="w-6 h-6">
+        </button>
       </div>
     </div>
 
@@ -150,7 +151,7 @@
           <div v-if="showMega" class="!mt-5 space-y-6 text-right">
             <div v-for="section in megaMenu" :key="section.title" class="!mb-3">
               <h4 class="text-font-bold text-2xl text-main flex items-center gap-2 !mb-5 cursor-pointer"
-               @click="goToCategory(section.slug)">
+                @click="goToCategory(section.slug)">
                 <img :src="section.icon" alt="icon" class="w-8 h-8" />
                 {{ section.title }}
               </h4>
@@ -170,34 +171,29 @@
       <RouterLink to="/auth" @click="isMenuOpen = false">
         <div class="text-2xl text-font-bold !mb-5">Sign up / Login</div>
       </RouterLink>
-        <div class="search-input relative lg:hidden block w-full">
-         <input
-        v-model="recipeName"
-        type="text"
-        placeholder="search recipe by name"
-        class="w-full h-12 rounded-full px-5 pr-24 !rounded-4xl input-style"
-        @keyup.enter="addIngredient"
-      />
-       <button
-        @click="addIngredient"
-        class="absolute right-1 cursor-pointer top-1 bottom-1 my-auto h-8 pl-4 pr-2 pt-1"
-      >
-        <img src="../assets/icons/search.svg" alt="search-icon" class="w-8 h-8">
-      </button>
-    </div>
+      <div v-if="isHomePage" class="search-input relative lg:hidden block w-full">
+        <input v-model="recipeName" type="text" placeholder="search recipe by name"
+          class="w-full h-12 rounded-full px-5 pr-24 !rounded-4xl input-style" @keyup.enter="goToSearchResults" />
+        <button @click="goToSearchResults"
+          class="absolute right-1 cursor-pointer top-1 bottom-1 my-auto h-8 pl-4 pr-2 pt-1">
+          <img src="../assets/icons/search.svg" alt="search-icon" class="w-8 h-8">
+        </button>
+      </div>
     </div>
   </transition>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
-import { useDarkMode } from '@/composables/useDarkMode'
-import router from '@/router'
+import { computed, ref } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
+import { useDarkMode } from '@/composables/useDarkMode';
+import router from '@/router';
 
 const { isDark, toggleTheme } = useDarkMode()
 const isMenuOpen = ref(false)
 const showMega = ref(false)
+const route = useRoute();
+const recipeName = ref('');
 
 const openMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -206,63 +202,73 @@ const toggleMegaMenu = () => {
   showMega.value = !showMega.value
 }
 
+const goToSearchResults = () => {
+  if (recipeName.value.trim()) {
+    router.push({
+      name: 'search-results',
+      query: { q: recipeName.value }
+    })
+    isMenuOpen.value = false;
+  }
+}
+
 const goToCategory = (slug) => {
   router.push({ path: '/recipes', query: { tags: slug } })
   isMenuOpen.value = false
 }
 
+const isHomePage = computed(() => route.name === 'home' || route.path === '/');
 
 const megaMenu = [
   {
     title: 'Bakery',
     icon: new URL('../assets/icons/dessert.svg', import.meta.url).href,
-    slug:'bakery'
+    slug: 'bakery'
   },
   {
     title: 'Drinks',
     icon: new URL('../assets/icons/drink.svg', import.meta.url).href,
-    slug:'drinks'
+    slug: 'drinks'
   },
   {
     title: 'Non-Veg',
     icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug:'nonveg'
+    slug: 'nonveg'
   },
   {
     title: 'Vegetables',
     icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug:'vegetables'
+    slug: 'vegetables'
   },
   {
     title: 'Fast Food',
     icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug:'fastfood'
+    slug: 'fastfood'
   },
   {
     title: 'Cereals',
     icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug:'cereal'
+    slug: 'cereal'
   },
   {
     title: 'Meals',
     icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug:'meal'
+    slug: 'meal'
   },
   {
     title: 'Sides',
     icon: new URL('../assets/icons/salad.svg', import.meta.url).href,
-    slug:'sides'
+    slug: 'sides'
   },
   {
     title: 'Fusion',
     icon: new URL('../assets/icons/salad.svg', import.meta.url).href,
-    slug:'fusion'
+    slug: 'fusion'
   }
 ]
 </script>
 
 <style scoped>
-
 nav {
   transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
 }
