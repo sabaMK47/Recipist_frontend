@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 !mt-10">
+  <div class="p-4 !my-10">
     <div v-if="loading">
       <Loading />
     </div>

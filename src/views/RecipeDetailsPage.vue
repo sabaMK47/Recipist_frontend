@@ -1,8 +1,5 @@
 <template>
-  <div v-if="loading">
-    <Loading />
-  </div>
-  <div class="flex flex-col lg:flex-row gap-8 justify-between !mt-30 lg:!ml-10 max-w-7xl mx-auto p-6">
+  <div class="flex flex-col lg:flex-row gap-8 justify-between !mt-30 lg:!mx-10 mx-auto p-6">
     <div class="lg:w-[70%] w-full space-y-6">
       <h1 class="text-3xl text-font-title text-main dark:text-main">
         {{ recipeDetails?.name }}
@@ -51,7 +48,9 @@
       </div>
     </div>
   </div>
-
+  <div v-if="loading">
+    <Loading />
+  </div>
 
 </template>
 

@@ -1,20 +1,20 @@
 <template>
   <div class="container flex justify-center items-center">
     <nav class="pagination" aria-label="Pagination Navigation">
-      <button class="page-btn" :disabled="currentPage === 1" @click="$emit('update:modelValue', currentPage - 1)"
+      <button class="page-btn text-font-light" :disabled="currentPage === 1" @click="$emit('update:modelValue', currentPage - 1)"
         aria-label="Previous page">
          Previous
       </button>
 
       <template v-for="page in displayedPages" :key="pageKey(page)">
-        <button v-if="page !== '...'" :class="['page-btn', { active: page === currentPage }]"
+        <button v-if="page !== '...'" :class="['page-btn text-font-light', { active: page === currentPage }]"
           @click="$emit('update:modelValue', page)" :aria-current="page === currentPage ? 'page' : null">
           {{ page }}
         </button>
         <span v-else class="ellipsis">...</span>
       </template>
 
-      <button class="page-btn" :disabled="currentPage === totalPages"
+      <button class="page-btn text-font-light" :disabled="currentPage === totalPages"
         @click="$emit('update:modelValue', currentPage + 1)" aria-label="Next page">
         Next 
       </button>

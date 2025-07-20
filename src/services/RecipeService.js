@@ -24,10 +24,11 @@ class RecipeService {
   return api.get('/api/recipes/random').then(res => res.data);
   }
 
-  getSearchResults(query){
-    return api.get(`:9200/recipes/_search?q=name:${query}`)
-    .then((response)=> response.hits.hits);
+  searchByName(q) {
+    return api.get('api/recipes/search', { params: { q } })
+      .then(res => res.data);
   }
+
 
   getRecipesByIngredients(ingredients) {
       const ingredientsStr = Array.isArray(ingredients) ? ingredients.join(',') : ingredients;
@@ -37,7 +38,6 @@ class RecipeService {
       }
     }).then(res => res.data)
   }
-
 
 }
 
