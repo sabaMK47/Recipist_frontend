@@ -221,49 +221,49 @@ const isHomePage = computed(() => route.name === 'home' || route.path === '/');
 
 const megaMenu = [
   {
-    title: 'Bakery',
+    title: 'Main-dish',
+    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
+    slug: 'main-dish'
+  },
+  {
+    title: 'Dietary',
+    icon: new URL('../assets/icons/dietary.svg', import.meta.url).href,
+    slug: 'dietary'
+  },
+  {
+    title: 'Vegetarian',
+    icon: new URL('../assets/icons/vegetables.svg', import.meta.url).href,
+    slug: 'vegetarian'
+  },
+  {
+    title: 'Vegan',
+    icon: new URL('../assets/icons/vegan.svg', import.meta.url).href,
+    slug: 'vegan'
+  },
+  {
+    title: 'Desserts',
     icon: new URL('../assets/icons/dessert.svg', import.meta.url).href,
-    slug: 'bakery'
+    slug: 'desserts'
   },
   {
-    title: 'Drinks',
-    icon: new URL('../assets/icons/drink.svg', import.meta.url).href,
-    slug: 'drinks'
+    title: 'BreakFast',
+    icon: new URL('../assets/icons/breakfast.svg', import.meta.url).href,
+    slug: 'breakfast'
   },
   {
-    title: 'Non-Veg',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug: 'nonveg'
+    title: 'Kid-friendly',
+    icon: new URL('../assets/icons/kid.svg', import.meta.url).href,
+    slug: 'kid-friendly'
   },
   {
-    title: 'Vegetables',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug: 'vegetables'
+    title: 'Side-dishes',
+    icon: new URL('../assets/icons/cereals.svg', import.meta.url).href,
+    slug: 'side-dishes'
   },
   {
-    title: 'Fast Food',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug: 'fastfood'
-  },
-  {
-    title: 'Cereals',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug: 'cereal'
-  },
-  {
-    title: 'Meals',
-    icon: new URL('../assets/icons/food.svg', import.meta.url).href,
-    slug: 'meal'
-  },
-  {
-    title: 'Sides',
+    title: 'Appetizers',
     icon: new URL('../assets/icons/salad.svg', import.meta.url).href,
-    slug: 'sides'
-  },
-  {
-    title: 'Fusion',
-    icon: new URL('../assets/icons/salad.svg', import.meta.url).href,
-    slug: 'fusion'
+    slug: 'appetizers'
   }
 ]
 </script>

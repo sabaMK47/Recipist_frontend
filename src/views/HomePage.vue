@@ -1,7 +1,7 @@
 <template>
-  <HeroSection />
+  <HeroSection @scroll-to-ingredients="scrollToIngredients"/>
 
-  <div class="search-section flex flex-col items-center justify-center text-center gap-4 bg-light dark:bg-lessdark">
+  <div class="search-section flex flex-col items-center justify-center text-center gap-4 bg-light dark:bg-lessdark" ref="ingredientSearchSection">
     <h2 class="text-l md:text-xl text-font-bold text-black dark:text-white p-5 rounded-4xl ">
       Let’s see what you have in your kitchen :)
     </h2>
@@ -41,14 +41,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref} from 'vue'
 import HeroSection from '@/components/HeroSection.vue'
 import RandomRecipe from '@/components/RandomRecipe.vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const newIngredient = ref('')
 const ingredients = ref([])
+const ingredientSearchSection = ref(null);
+
+function scrollToIngredients() {
+  ingredientSearchSection.value?.scrollIntoView({ behavior: 'smooth' });
+}
 
 function addIngredient() {
   const value = newIngredient.value.trim()

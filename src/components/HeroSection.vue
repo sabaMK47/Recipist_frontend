@@ -23,7 +23,7 @@
           <Motion :initial="{ opacity: 0, y: -50 }"
             :animate="typingDone ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }"
             :transition="{ duration: 1.2, ease: 'easeOut' }" v-if="true">
-            <button
+            <button @click="$emit('scroll-to-ingredients')"
               class="bg-main text-white rounded-2xl pb-4 pt-2 px-10 !mt-6 text-2xl text-font-bold w-fit cursor-pointer hover:scale-90 transition">
               Let's Start
             </button>

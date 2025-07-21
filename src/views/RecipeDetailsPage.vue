@@ -21,8 +21,14 @@
       </div>
 
 
-      <img src="../assets/images/pasta.jpg" alt="Recipe Image"
-        class="rounded-xl shadow-md w-full object-cover max-h-[500px]" />
+      <img :src="imageUrl" alt="Recipe Image" class="rounded-xl shadow-md w-full object-cover max-h-[500px]" />
+      <div v-if="authorName && authorLink" class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+        Photo by
+        <a :href="authorLink" target="_blank" class="underline">{{ authorName }}</a>
+        on
+        <a href="https://unsplash.com" target="_blank" class="underline">Unsplash</a>
+      </div>
+
     </div>
 
     <div
@@ -56,21 +62,27 @@
 
 <script setup>
 import RecipeService from '@/services/RecipeService'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import Loading from '@/components/Loading.vue'
+import { useRecipeStore } from '@/stores/UseRecipeStore'
 
 const recipeDetails = ref(null)
 const route = useRoute()
 const id = route.params.id;
 const loading = ref(false);
+const recipeStore = useRecipeStore();
+const imageUrl = computed(() => recipeStore.currentRecipeImage || 'https://via.placeholder.com/400x300?text=No+Image');
+const authorName = computed(() => recipeStore.currentRecipeAuthorName);
+const authorLink = computed(() => recipeStore.currentRecipeAuthorLink);
+
+
 
 const fetchRecipeDetails = async (id) => {
   Loading.value = true;
   try {
     const response = await RecipeService.getRecipeDetails(id)
     recipeDetails.value = response;
-    console.log('Fetched recipe:', response)
   } catch (err) {
     console.error('Failed to fetch recipe:', err)
   } finally {
@@ -80,5 +92,6 @@ const fetchRecipeDetails = async (id) => {
 
 onMounted(() => {
   fetchRecipeDetails(id)
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 })
 </script>

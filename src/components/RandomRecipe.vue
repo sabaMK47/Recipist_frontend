@@ -28,17 +28,28 @@
             </h5>
         </div>
         <div class="pic">
-            <img src="../assets/images/pasta.jpg" alt="Recipe Image"
-                class="rounded-xl shadow-md w-full object-cover max-h-[300px] " />
+            <img :src="imageUrl" alt="Recipe Image" class="rounded-xl shadow-md w-full object-cover max-h-[300px] " />
+            <div v-if="authorName && authorLink" class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                Photo by
+                <a :href="authorLink" target="_blank" class="underline">{{ authorName }}</a>
+                on
+                <a href="https://unsplash.com" target="_blank" class="underline">Unsplash</a>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import RecipeService from '@/services/RecipeService'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref , computed } from 'vue'
+import { useRecipeStore } from '@/stores/UseRecipeStore';
 
-const recipeDetails = ref(null)
+const recipeDetails = ref(null);
+const recipeStore = useRecipeStore();
+const imageUrl = computed(() => recipeStore.currentRecipeImage || 'https://via.placeholder.com/400x300?text=No+Image');
+const authorName = computed(() => recipeStore.currentRecipeAuthorName);
+const authorLink = computed(() => recipeStore.currentRecipeAuthorLink);
+
 
 const fetchRecipeDetails = async () => {
     try {

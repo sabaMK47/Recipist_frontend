@@ -13,7 +13,14 @@
   ">
 
     <div class="recipe-pic relative overflow-hidden h-48 sm:h-56">
-      <img :src="randomImageUrl" :alt="recipeTitle" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300" />
+      <img :src="imageUrl" :alt="recipeTitle"
+        class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300" />
+      <small class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+        Photo by
+        <a :href="photoAuthorLink" target="_blank" class="underline">{{ photoAuthorName }}</a>
+        on
+        <a href="https://unsplash.com" target="_blank" class="underline">Unsplash</a>
+      </small>
       <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
     </div>
 
@@ -24,7 +31,7 @@
           <h4 class="text-font-light text-gray-400">{{ minutes }}min</h4>
         </div>
         <div class="text-gray-600 dark:text-white text-sm mb-4 !mt-4 text-font-light line-clamp-3">
-         {{ description }}
+          {{ description }}
         </div>
       </div>
 
@@ -37,9 +44,7 @@
             cursor-pointer
             transition-all duration-300 
             transform hover:-translate-y-0.5 hover:shadow-md
-          "
-            @click="goToDetails"
-          >
+          " @click="goToDetails">
           See Details
         </button>
 
@@ -65,22 +70,69 @@
 </template>
 
 <script setup>
-import { ref , defineProps} from 'vue';
+import { useRecipeStore } from '@/stores/UseRecipeStore';
+import { ref, defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 const props = defineProps({
-  id:Number,
-  recipeTitle:String,
-  description:String,
-  minutes:String,
+  id: Number,
+  recipeTitle: String,
+  description: String,
+  minutes: Number,
 })
 
 const liked = ref(false);
 const router = useRouter();
+const imageUrl = ref(null);
+const unsplashAccessKey = "9GomkJ5o7GznFqHvLNBNza4ir7jGPG9YsVnyvTEGsqw";
+const recipeStore = useRecipeStore();
+const photoAuthorName = ref('');
+const photoAuthorLink = ref('');
 
-const randomImageUrl = `https://source.unsplash.com/600x400/?${encodeURIComponent(props.recipeTitle)},food`;
+function extractKeywords(recipeTitle) {
+  const commonStopWords = [
+    'with', 'and', 'the', 'a', 'of', 'in', 'on', 'to', 'for', 'from', 'by',
+    'an', 'this', 'that', 'these', 'those', 'all', 'one', 'good', 'bad', 'i', 'how', 'is', 'are', 'little', 'bit'
+  ];
 
-function goToDetails(){
-    router.push(`/recipes/${props.id}`);
+  return recipeTitle
+    .toLowerCase()
+    .split(/\s+/) // split by space
+    .filter(word => !commonStopWords.includes(word)) // remove common words
+    .slice(0, 2) // take first 1 or 2 keywords
+    .join(',');
+}
+
+const keywordQuery = extractKeywords(props.recipeTitle);
+
+; (async () => {
+  try {
+    const response = await fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashAccessKey}&query=food,${keywordQuery}`);
+    const data = await response.json();
+    if (data.results.length > 0) {
+      const photo = data.results[0];
+      imageUrl.value = photo.urls.regular;
+      photoAuthorName.value = photo.user.name;
+      photoAuthorLink.value = photo.user.links.html;
+
+      // Trigger the download event
+      fetch(photo.links.download_location, {
+        headers: {
+          Authorization: `Client-ID ${unsplashAccessKey}`,
+        },
+      });
+    } else {
+      imageUrl.value = 'https://via.placeholder.com/400x300?text=No+Image';
+    }
+  } catch (error) {
+    console.error("Image fetch error:", error);
+    imageUrl.value = 'https://via.placeholder.com/400x300?text=Error';
+  }
+})();
+
+function goToDetails() {
+  recipeStore.currentRecipeImage = imageUrl.value;
+  recipeStore.setPhotoAttribution(photoAuthorName.value, photoAuthorLink.value);
+  router.push(`/recipes/${props.id}`);
 }
 
 </script>
