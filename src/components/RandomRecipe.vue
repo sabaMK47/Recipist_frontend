@@ -46,7 +46,7 @@ import { useRecipeStore } from '@/stores/UseRecipeStore';
 
 const recipeDetails = ref(null);
 const recipeStore = useRecipeStore();
-const imageUrl = computed(() => recipeStore.currentRecipeImage || 'https://via.placeholder.com/400x300?text=No+Image');
+const imageUrl = computed(() => recipeStore.currentRecipeImage);
 const authorName = computed(() => recipeStore.currentRecipeAuthorName);
 const authorLink = computed(() => recipeStore.currentRecipeAuthorLink);
 

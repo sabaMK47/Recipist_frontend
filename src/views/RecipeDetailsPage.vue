@@ -72,7 +72,7 @@ const route = useRoute()
 const id = route.params.id;
 const loading = ref(false);
 const recipeStore = useRecipeStore();
-const imageUrl = computed(() => recipeStore.currentRecipeImage || 'https://via.placeholder.com/400x300?text=No+Image');
+const imageUrl = computed(() => recipeStore.currentRecipeImage);
 const authorName = computed(() => recipeStore.currentRecipeAuthorName);
 const authorLink = computed(() => recipeStore.currentRecipeAuthorLink);
 

@@ -48,7 +48,7 @@
           See Details
         </button>
 
-        <button @click="liked = !liked" class="cursor-pointer">
+        <button @click="toggleLike" class="cursor-pointer">
           <!-- Empty Heart (default) -->
           <svg v-if="!liked" class="w-6 h-6" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -73,6 +73,7 @@
 import { useRecipeStore } from '@/stores/UseRecipeStore';
 import { ref, defineProps } from 'vue';
 import { useRouter } from 'vue-router';
+import api from '@/services/api';
 const props = defineProps({
   id: Number,
   recipeTitle: String,
@@ -88,10 +89,23 @@ const recipeStore = useRecipeStore();
 const photoAuthorName = ref('');
 const photoAuthorLink = ref('');
 
+async function toggleLike() {
+  liked.value = !liked.value;  
+
+  try {
+    const res = await api.post('/user/favorites', { recipe_id: props.id });
+    liked.value = res.data.favorited;  // sync with server response
+  } catch (error) {
+    liked.value = !liked.value;  // revert UI if error
+    console.error("Failed to update favorite:", error);
+  }
+}
+
 function extractKeywords(recipeTitle) {
   const commonStopWords = [
     'with', 'and', 'the', 'a', 'of', 'in', 'on', 'to', 'for', 'from', 'by',
-    'an', 'this', 'that', 'these', 'those', 'all', 'one', 'good', 'bad', 'i', 'how', 'is', 'are', 'little', 'bit'
+    'an', 'this', 'that', 'these', 'those', 'all', 'one', 'good', 'bad', 'i',
+     'how', 'is', 'are', 'little', 'bit','than'
   ];
 
   return recipeTitle
@@ -113,19 +127,9 @@ const keywordQuery = extractKeywords(props.recipeTitle);
       imageUrl.value = photo.urls.regular;
       photoAuthorName.value = photo.user.name;
       photoAuthorLink.value = photo.user.links.html;
-
-      // Trigger the download event
-      fetch(photo.links.download_location, {
-        headers: {
-          Authorization: `Client-ID ${unsplashAccessKey}`,
-        },
-      });
-    } else {
-      imageUrl.value = 'https://via.placeholder.com/400x300?text=No+Image';
     }
   } catch (error) {
     console.error("Image fetch error:", error);
-    imageUrl.value = 'https://via.placeholder.com/400x300?text=Error';
   }
 })();
 

@@ -14,9 +14,17 @@
             {{ isLogin ? 'Sign in' : 'Register' }}
           </h2>
 
-          <form class="flex flex-col justify-center items-center gap-4 text-font-light">
-            <input type="email" placeholder="email" class="input-style lg:w-[500px] w-full" />
-            <input type="password" placeholder="password" class="input-style lg:w-[500px] w-full" />
+          <form  @submit.prevent="handleSubmit" class="flex flex-col justify-center items-center gap-2 text-font-light">
+            <input v-if="!isLogin" type="text" placeholder="name" class="input-style lg:w-[500px] w-full"
+              v-model="name" />
+            <p v-if="!isLogin" class="text-font-light text-xs  text-red-700">{{ nameError }}</p>
+            <input type="email" placeholder="email" class="input-style lg:w-[500px] w-full" v-model="email" />
+            <p class="text-font-light text-xs  text-red-700">{{ emailError }}</p>
+            <input type="password" placeholder="password" class="input-style lg:w-[500px] w-full" v-model="password" />
+            <p class="text-font-light text-xs  text-red-700">{{ passwordError }}</p>
+            <input v-if="!isLogin" type="password" placeholder="password confirmation"
+              class="input-style lg:w-[500px] w-full" v-model="passwordConfirmation" />
+            <p class="text-font-light text-xs  text-red-700">{{ passwordConfirmationError }}</p>
 
             <Motion :initial="{ opacity: 0, y: 20 }" :animate="{ opacity: 1, y: 0 }"
               :transition="{ duration: 0.5, delay: 0.2 }">
@@ -44,12 +52,66 @@
 <script setup>
 import { ref } from 'vue'
 import { Motion } from '@oku-ui/motion'
+import AuthService from '@/services/AuthService'
+import { useAuthStore } from '@/stores/AuthStore'
+import { useRouter } from 'vue-router'
 
+const authStore = useAuthStore()
+const router = useRouter()
 const isLogin = ref(true)
+const name = ref("")
+const email = ref("")
+const password = ref("")
+const passwordConfirmation = ref("")
+const passwordConfirmationError = ref("")
+const passwordError = ref("")
+const nameError = ref("")
+const emailError = ref("")
 
 const toggleMode = () => {
   isLogin.value = !isLogin.value
 }
+
+const handleSubmit = async () => {
+  if (!isLogin.value && password.value !== passwordConfirmation.value) {
+    passwordConfirmationError.value = 'Passwords do not match!'
+    return
+  } else if (!password.value) {
+    passwordError.value = 'please fill in the password fields.'
+  } else if (!email.value) {
+    emailError.value = 'please fill in the email field.'
+  } else if (!name.value) {
+    nameError.value = 'please fill in the name field.'
+  }else {
+    passwordError.value = ''
+    nameError.value = ''
+    emailError.value = ''
+  }
+
+  try {
+    if (isLogin.value) {
+      const res = await AuthService.login(email.value, password.value)
+      authStore.setToken(res.token)
+      authStore.setUser(res.user)
+      console.log('Logged in:', res)
+      router.push({name:'user-account'});
+    } else {
+      const res = await AuthService.register(
+        name.value || email.value.split('@')[0],
+        email.value,
+        password.value,
+        passwordConfirmation.value
+      )
+      authStore.setToken(res.token)
+      authStore.setUser(res.user)
+      console.log('Registered:', res)
+      isLogin.value = true;
+    }
+  } catch (err) {
+    console.error('Auth error:', err.response?.data || err)
+  }
+}
+
 </script>
 
 <style scoped>

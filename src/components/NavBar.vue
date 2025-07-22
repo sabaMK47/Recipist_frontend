@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="w-screen flex justify-between items-center bg-white text-black dark:bg-dark dark:text-white gap-x-9 absolute top-0 left-0 p-5 text-lg ">
+    class="w-screen flex justify-between items-center bg-white text-black dark:bg-dark dark:text-white gap-x-9 absolute top-0 left-0 p-5 text-lg">
     <!-- Left section -->
     <div class="flex gap-x-9 items-center">
       <RouterLink to="/">
@@ -93,9 +93,13 @@
     <!-- Right section -->
     <div class="flex gap-x-6 items-center text-font-medium">
       <RouterLink to="/auth" class="group relative flex-col items-center cursor-pointer hidden lg:flex">
-        <p class="cursor-pointer">Sign up / Login</p>
-        <span
-          class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"></span>
+        <p v-if="authStore.token" @click="handleLogout()" class="cursor-pointer">
+          Logout
+        </p>
+        <RouterLink v-else to="/auth" class="cursor-pointer">
+          <p class="cursor-pointer">Sign up / Login</p>
+        </RouterLink> 
+        <span class="h-[2px] w-full mt-1 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-main"></span>
       </RouterLink>
 
       <!-- Theme toggle -->
@@ -169,7 +173,7 @@
         <a href="#" class="block hover:text-main transition">About us</a>
       </div>
       <RouterLink to="/auth" @click="isMenuOpen = false">
-        <div class="text-2xl text-font-bold !mb-5">Sign up / Login</div>
+        <div class="text-2xl text-font-bold !mb-5">{{ route.name == 'user-account' ? 'Logout' : 'Sign up / Login' }}</div>
       </RouterLink>
       <div v-if="isHomePage" class="search-input relative lg:hidden block w-full">
         <input v-model="recipeName" type="text" placeholder="search recipe by name"
@@ -188,18 +192,27 @@ import { computed, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useDarkMode } from '@/composables/useDarkMode';
 import router from '@/router';
+import { useAuthStore } from '@/stores/AuthStore';
+import AuthService from '@/services/AuthService';
 
 const { isDark, toggleTheme } = useDarkMode()
 const isMenuOpen = ref(false)
 const showMega = ref(false)
 const route = useRoute();
 const recipeName = ref('');
+const authStore = useAuthStore();
 
 const openMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 const toggleMegaMenu = () => {
   showMega.value = !showMega.value
+}
+
+const handleLogout= async ()=>{
+  authStore.clearAuth();
+  await AuthService.logout();
+  router.push('/auth');
 }
 
 const goToSearchResults = () => {
