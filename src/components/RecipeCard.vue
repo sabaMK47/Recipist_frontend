@@ -93,7 +93,7 @@ async function toggleLike() {
   liked.value = !liked.value;  
 
   try {
-    const res = await api.post('/user/favorites', { recipe_id: props.id });
+    const res = await api.post('/api/user/favorites', { recipe_id: props.id });
     liked.value = res.data.favorited;  // sync with server response
   } catch (error) {
     liked.value = !liked.value;  // revert UI if error
