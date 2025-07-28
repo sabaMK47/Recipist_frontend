@@ -39,6 +39,10 @@ class RecipeService {
     }).then(res => res.data)
   }
 
+  getFavoriteRecipes(){
+    return api.get(`api/user/favorites`).then(res => res.data)
+  }
+
 }
 
 export default new RecipeService()

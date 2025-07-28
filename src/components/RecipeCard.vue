@@ -71,9 +71,12 @@
 
 <script setup>
 import { useRecipeStore } from '@/stores/UseRecipeStore';
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';
+import { useAuthStore } from '@/stores/AuthStore';
+import { useToast } from 'vue-toastification';
+
 const props = defineProps({
   id: Number,
   recipeTitle: String,
@@ -81,6 +84,8 @@ const props = defineProps({
   minutes: Number,
 })
 
+const toast = useToast();
+const authStore = useAuthStore()
 const liked = ref(false);
 const router = useRouter();
 const imageUrl = ref(null);
@@ -88,16 +93,37 @@ const unsplashAccessKey = "9GomkJ5o7GznFqHvLNBNza4ir7jGPG9YsVnyvTEGsqw";
 const recipeStore = useRecipeStore();
 const photoAuthorName = ref('');
 const photoAuthorLink = ref('');
+const isAuthenticated = computed(() => !!authStore.token);
 
 async function toggleLike() {
-  liked.value = !liked.value;  
+  if (!isAuthenticated.value) {
+    toast.warning("You need to login before you can add this recipe to your favorites");
+    router.push('/auth'); 
+    return;
+  }
 
+  liked.value = !liked.value; 
+  
   try {
     const res = await api.post('/api/user/favorites', { recipe_id: props.id });
     liked.value = res.data.favorited;  // sync with server response
+    
+    if (res.data.favorited) {
+      toast.success("Recipe added to favorites!");
+    } else {
+      toast.info("Recipe removed from favorites");
+    }
   } catch (error) {
     liked.value = !liked.value;  // revert UI if error
-    console.error("Failed to update favorite:", error);
+    
+    if (error.response?.status === 401) {
+      toast.warning("Your session has expired. Please login again.");
+      authStore.clearAuth();
+      router.push('/auth');
+    } else {
+      console.error("Failed to update favorite:", error);
+      toast.error("Failed to update favorite");
+    }
   }
 }
 
@@ -105,7 +131,7 @@ function extractKeywords(recipeTitle) {
   const commonStopWords = [
     'with', 'and', 'the', 'a', 'of', 'in', 'on', 'to', 'for', 'from', 'by',
     'an', 'this', 'that', 'these', 'those', 'all', 'one', 'good', 'bad', 'i',
-     'how', 'is', 'are', 'little', 'bit','than'
+     'how', 'is', 'are', 'little', 'bit','than','different','key','carnation'
   ];
 
   return recipeTitle
